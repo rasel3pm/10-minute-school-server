@@ -4,13 +4,25 @@ const Schema = mongoose.Schema;
 // Define the Lesson schema
 const LessonSchema = new Schema(
   {
+    title: {
+      type: String,
+      required: true,
+    },
     video: [
       {
-        title: String,
-        url: String,
+        publicID: {
+          type: String,
+          required: true,
+        },
+        url: {
+          type: String,
+          required: true,
+        },
       },
     ],
-    note: [String],
+    note: {
+      type: String,
+    },
   },
   { timestamps: true, versionKey: false }
 );

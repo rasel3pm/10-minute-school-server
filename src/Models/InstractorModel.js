@@ -8,13 +8,17 @@ const InstructorSchema = new Schema(
       type: String,
       required: true,
     },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
     description: {
       type: String,
       required: true,
     },
-    email: {
+    image: {
       type: String,
-      required: true,
     },
   },
   { timestamps: true, versionKey: false }

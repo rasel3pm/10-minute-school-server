@@ -12,6 +12,10 @@ const CourseSchema = new Schema(
       type: String,
       required: true,
     },
+    thumbnail: {
+      type: String,
+      required: true,
+    },
     instractorID: {
       type: Schema.Types.ObjectId,
       ref: "Instructor", // Assuming there is an Instructor model
