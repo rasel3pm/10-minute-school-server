@@ -7,16 +7,12 @@ const LessonSchema = new Schema(
       type: String,
       required: true,
     },
-    video: {
-      publicID: {
+    video: [
+      {
         type: String,
         required: true,
       },
-      url: {
-        type: String,
-        required: true,
-      },
-    },
+    ],
 
     note: {
       type: String,
