@@ -32,11 +32,28 @@ router.post("/create-instractor", instractorController.crateInstractor);
 //Skill Route
 router.post("/create-skill", skillController.CrateSkill);
 
-//lesson Route
-router.post(
-  "/create-lesson",
-  upload.single("videoFile"),
-  lessonController.CreateLesson
-);
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "lesson_videos", // Set the folder name where the video will be stored
+    resource_type: "video", // Specify the resource type
+    allowed_formats: ["mp4", "webm"], // Specify allowed video formats
+    use_filename: true, // Use the original file name as the Cloudinary public ID
+  },
+});
 
+//lesson Route
+router.post("/create-lesson", upload.single("videoFile"), async (req, res) => {
+  const { title, note } = req.body;
+  const videoFileUrl = req.file.path; // The Cloudinary URL will be available at req.file.path
+
+  const newLesson = new LessonModel({
+    title,
+    videoFileUrl,
+    note,
+  });
+
+  await newLesson.save();
+  res.send("Lesson created successfully");
+});
 module.exports = router;
