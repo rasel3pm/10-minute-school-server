@@ -6,6 +6,8 @@ const instractorController = require("../Controllers/instractorController");
 const skillController = require("../Controllers/skillController");
 const lessonController = require("../Controllers/lessonController");
 
+//test git
+
 //admin route
 router.get("/create", adminController.create);
 router.get("/read", adminController.read);
