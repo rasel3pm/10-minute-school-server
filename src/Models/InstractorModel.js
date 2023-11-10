@@ -1,29 +1,28 @@
 const mongoose = require("mongoose");
-const dataModel = new mongoose.Schema(
+const Schema = mongoose.Schema;
+
+// Define the Instructor schema
+const InstructorSchema = new Schema(
   {
     name: {
       type: String,
       required: true,
-      trim: true,
     },
     email: {
       type: String,
       required: true,
       unique: true,
-      trim: true,
     },
-    password: {
+    description: {
       type: String,
       required: true,
-      trim: true,
     },
-    role: {
-      enum: ["user", "admin"],
-      default: "user",
+    image: {
+      type: String,
     },
   },
   { timestamps: true, versionKey: false }
 );
 
-const StudentModel = mongoose.model("students", dataModel);
-module.exports = StudentModel;
+// Create and export the Instructor model
+module.exports = mongoose.model("Instructor", InstructorSchema);
