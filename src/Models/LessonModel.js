@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
 // Define the Lesson schema
 const LessonSchema = new Schema(
   {
@@ -8,18 +7,17 @@ const LessonSchema = new Schema(
       type: String,
       required: true,
     },
-    video: [
-      {
-        publicID: {
-          type: String,
-          required: true,
-        },
-        url: {
-          type: String,
-          required: true,
-        },
+    video: {
+      publicID: {
+        type: String,
+        required: true,
       },
-    ],
+      url: {
+        type: String,
+        required: true,
+      },
+    },
+
     note: {
       type: String,
     },

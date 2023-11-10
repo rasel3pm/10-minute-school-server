@@ -31,6 +31,10 @@ router.post("/create-instractor", instractorController.crateInstractor);
 router.post("/create-skill", skillController.CrateSkill);
 
 //lesson Route
-router.post("/create-lesson", lessonController.CreateLesson);
+router.post(
+  "/create-lesson",
+  upload.single("videoFile"),
+  lessonController.CreateLesson
+);
 
 module.exports = router;
